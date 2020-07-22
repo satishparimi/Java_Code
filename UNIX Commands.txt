@@ -1,0 +1,232 @@
+--- Filter commands------
+
+grep "search kewword" filename				:search the keyword in a single file using grep commands
+
+		Ex:  grep hyderabad sample1
+
+grep "search keyword" demo*					: search the keyword in all files name starts with demo*
+
+
+grep -i "searchkeyword" filename			: search the keyword in a file and ignore the case
+
+1) How to search specific keyword by excluding others
+
+		grep expectedkeyword logfilename.txt | grep -v excludedkeyword
+		
+		get "search keyword" logfile.txt | grep -v "excluded keyword"
+
+
+2) Count no of occurances of word in a log file
+
+		grep -c "keyword" logfile.txt
+
+3) Show content lines after and before match
+
+		grep --context=6 sucessful logfile.txt
+		
+4) search with regular expression usin grep commands
+	
+		egrep 'error|exception' logfile.txt
+	
+5) case Insensitive search
+	
+		grep -i error logfile.txt
+				
+6) searching patterns in zip files
+
+		zgrep -i error *.gz
+		
+7) search whole word 
+
+		grep -w ERROR logfile.txt
+
+8) Display file names which contains patterns 
+	
+		grep -i error *.log
+
+
+
+
+--Tail commands
+##How to view last ten lines of file
+
+tail /neon/logs/api.log
+
+##Limit the number of lines to show from file
+
+tail -n 10 api.log
+
+##Limit the number of bytes to show from file
+
+tail -c 24 api.log
+
+##How to show content from multile files
+
+tail usr/neon/logs/api.log usr/neon/logs/web.log
+	==>usr/neon/logs/api.log<== 
+	file-1 restuls
+
+	==>usr/neon/logs/web.log<==
+	file-2 restuls	
+
+##How do you view only “ERROR” lines (excluding “EXCEPTION”) lines in a running log file?
+
+	tail -f filename |grep error | grep -v exception
+	
+	tail -f neon/logs/api.log | grep error | grep -v exception
+
+
+##Suppress the header line
+
+tail -q neon/logs/api.log
+
+##Live log
+tail -f 100 api.log
+
+
+--cat commands
+##Open multiple file using cat command
+
+cat api.log webserver.log
+
+##Create file using cat command
+cat >test1
+
+Hold CTRL + D to exit
+
+##Use more or less command to view file content
+cat api.log | more
+cat api.log | less
+
+##Display line number in file
+cat -n api.log 
+
+
+##Display $ at the end of the each line
+cat -e api.log
+
+
+
+
+-- Check the logged in user information 
+
+logname		to see login name of the user
+
+who am i 		current logged in user information like user name, terminal number
+
+who				current list of users
+
+
+-- creating files ----
+
+touch 			to create new file
+
+cat file1		to see content of file1
+
+cat file1 file2		to see contents of file1 as well as file2
+
+cat file1 file2 > all		: moving data into file name "all" the 
+
+
+
+-- removing files ------
+
+rm filename			remove file
+
+rm fii1 file2 file3		remove all 3 files at a time
+
+rm file.docx			remove this word file
+
+rm *.docx				remove all word files in the given path
+
+rm *.*					remove all files in the given path 
+
+
+-- Create Directory-----
+
+mkdir directoryname 	creating directoryname
+
+mkdir dir1 dir2 dir3	creating multiple directories
+
+mkdir -p dir1 dir2 dir3  	creating all parent directories in a given path
+
+
+-- Change directory -----
+
+cd directoryname		move to the child directory from current directory
+
+cd .. 					moves to the parent directory
+
+cd						moves to the home direcotry
+
+
+--- display list of files -----
+
+ls						displys list of file names
+
+ls *.docx				displayes all files extension with .cpp
+
+
+
+-- Rename the files name----
+
+mv ex.cpp example.cpp		changing filename
+
+
+
+----Copy Files-----
+
+cp file1 file2				copy file1 contents into file2, if already exists override will happen
+
+wc file1					it will count the words in file1
+
+sort file1 file2 			it will display only unique content / lines in both files
+
+sort -m file1 file2			merge file1 content into file2
+
+
+
+-- Remove duplicate lines 
+
+uniq						remove duplicate lines 
+
+
+---Chaging permission to file / drive
+
+chmod 700 filename
+
+
+
+---zip and unzip the files
+
+gzip file1			zip or compress the file and replace it with compressed version
+
+gunzip 				unzip the file
+
+
+==How to check current processes or jobs==
+
+		ps
+		
+		result: it will diplay all current runnig services
+		
+		PID		USER		TIME 				COMMAND
+		1		root		0:00				/bin/sh/sbin/init
+		37 		root 		0:00				[pdflush]	
+			
+
+--- Kill the running job /process
+
+kill processid
+
+===============Autosys==========
+
+- job scheduler
+
+
+	
+
+
+
+
+
